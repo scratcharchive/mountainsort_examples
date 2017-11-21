@@ -1,7 +1,7 @@
-Installation for developers
-==========================
+Compilation instructions
+========================
 
-`Installing using the debbian packages <https://mountainlab.readthedocs.org>`_ is recommended for most users. However, if you wish to be able to compile MountainLab, MLPipelines, MountainSort, and MountainView, you will need to install several dependencies first. Again, Linux/Ubuntu and Debian are the currently supported development platforms. Other Linux flavors should also work. Mac and Windows are not currently not supported.
+`Installing using the debbian packages <https://mountainlab.readthedocs.org>`_ is recommended for most users. However, if you wish to be able to compile MountainLab, MLPipelines, MountainSort, and MountainView, you will need to install several dependencies first. Again, Linux/Ubuntu and Debian are the currently supported development platforms. Other Linux flavors should also work. Mac and Windows are not currently not supported. We aim to support mac in the relatively near future.
 
 Prerequisites
 -------------
@@ -94,7 +94,6 @@ Do the following (after following the prerequisite installation instructions abo
 	./compile_components.sh
 
 You must add mlpipeline/bin to your PATH environment variable.
-Also add mlpipeline/utils/mlp to your PATH environment variable.
 
 .. code :: bash
 
@@ -156,60 +155,7 @@ If you installed MountainSort as a plugin package to MountainLab, then you shoul
 
   mp-list-processors
 
-At the time of writing these docs, I have the following processors:
-
-.. code:: bash
-
-	magland@dub:~/dev/mountainsort/docs$ mp-list-processors 
-	banjoview.cross_correlograms
-	mountainsortalg.ms3
-	ms3.apply_timestamp_offset
-	ms3.apply_whitening_matrix
-	ms3.bandpass_filter
-	ms3.cluster_metrics
-	ms3.combine_cluster_metrics
-	ms3.combine_firing_segments
-	ms3.combine_firings
-	ms3.compute_amplitudes
-	ms3.compute_templates
-	ms3.compute_whitening_matrix
-	ms3.concat_event_times
-	ms3.concat_firings
-	ms3.concat_timeseries
-	ms3.confusion_matrix
-	ms3.create_firings
-	ms3.create_multiscale_timeseries
-	ms3.extract_clips
-	ms3.extract_firings
-	ms3.isolation_metrics
-	ms3.link_segments
-	ms3.load_test
-	ms3.mask_out_artifacts
-	ms3.mv_compute_amplitudes
-	ms3.mv_compute_templates
-	ms3.mv_extract_clips
-	ms3.mv_subfirings
-	ms3.reorder_labels
-	ms3.run_metrics_script
-	ms3.split_firings
-	ms3.synthesize_timeseries
-	ms3.whiten
-	ms3.whiten_clips
-	pyms.bandpass_filter
-	pyms.compute_templates
-	pyms.concatenate_firings
-	pyms.extract_clips
-	pyms.extract_geom
-	pyms.extract_timeseries
-	pyms.handle_drift_in_segment
-	pyms.join_segments
-	pyms.normalize_channels
-	pyms.synthesize_drifting_timeseries
-	pyms.synthesize_random_firings
-	pyms.synthesize_random_waveforms
-	pyms.synthesize_timeseries
-	spikeview.metrics1
-	spikeview.templates
+You should see a list of processors including, for example ms3.bandpass_filter and pyms.extract_timeseries.
 
 To see the inputs/outputs for each of these registered processors, use the mp-spec command as described in the MountainLab documentation.
 

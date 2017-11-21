@@ -16,7 +16,7 @@ There are various ways to install and/or use MountainSort. The best choice will 
 * from the web interface (cloud computing)
 * as a standalone program
 
-Below, we will describe installation as a plugin to ML (recommended), and the remarks below will indicate how it could be used as a standalone program.
+Below, we will describe installation as a plugin to ML (recommended), and the remarks below will indicate how it could be used as a standalone program. Documentation about using the web framework will come soon.
 
 Supported operating systems
 ---------------------------
