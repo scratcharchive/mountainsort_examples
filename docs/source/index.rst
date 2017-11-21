@@ -73,13 +73,13 @@ Next, try the examples in the mountainsort_examples repository
 .. code:: bash
 
   git clone https://github.com/flatironinstitute/mountainsort_examples
-  cd mountainsort_examples/example1_mlp
+  cd mountainsort_examples/examples/example1_mlp
 
 **2. Simulate data for the test:**
 
 .. code:: bash
 
-  mlp-run synthesize_v1.mlp synthesize --samplerate=30000 --duration=600 --timeseries=raw.mda --geom=geom.csv --waveforms_true=waveforms_true.mda --num_channels=10 --num_units=50
+  mlp-run synthesize_v1.mlp synthesize --samplerate=30000 --duration=600 --timeseries=data/raw.mda --geom=data geom.csv --waveforms_true=data/waveforms_true.mda --num_channels=10 --num_units=50
 
 This will generate test raw data 'raw.mda', geometry data 'geom.csv', and waveform data 'waveforms_true.mda' in the current directory
 
@@ -89,7 +89,7 @@ You will now call the mountainsort3 sort pipeline, passing it the newly-created 
 
 .. code:: bash
 
-  mlp-run mountainsort3.mlp sort --raw=raw.mda --geom=geom.csv --firings_out=firings.mda --_params=params.json
+  mlp-run mountainsort3.mlp sort --raw=data/raw.mda --geom=data/geom.csv --firings_out=data/firings.mda --_params=params.json
 
 **4. View the test sorting**
 
@@ -97,7 +97,7 @@ The GUI only requires a timeseries, in this case raw data, 'raw.mda', and the fi
 
 .. code:: bash
 
-  mountainview --raw=raw.mda --firings=firings.mda --geom=geom.csv --samplerate=30000
+  mountainview --raw=data/raw.mda --firings=data/firings.mda --geom=data/geom.csv --samplerate=30000
 
 **5. Re-sort the data with automated curation (masking of low-quality clusters and bursting-related merging)**
 
@@ -105,13 +105,13 @@ This time, you will add the automated curation option, '--curate=true'. This wil
 
 .. code:: bash
 
-  mlp-run mountainsort3.mlp sort --raw=raw.mda --geom=geom.csv --firings_out=firings2.mda --_params=params.json --curate=true
+  mlp-run mountainsort3.mlp sort --raw=data/raw.mda --geom=data/geom.csv --firings_out=data/firings2.mda --_params=params.json --curate=true
 
 **6. View the curated test sorting**
 
 .. code:: bash
 
-  mountainview --raw=raw.mda --firings=firings2.mda --geom=geom.csv --samplerate=30000
+  mountainview --raw=data/raw.mda --firings=data/firings2.mda --geom=data/geom.csv --samplerate=30000
 
 Note that sorting low signal-to-noise ratio data with relabeling may result in there being no apparent clusters (all clusters are of low quality). For this reason, we suggest first sorting your data without curation.
  
