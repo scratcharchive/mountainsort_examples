@@ -46,6 +46,13 @@ Once installed, run the following to choose a temporary directory path. This is 
 
   mlconfig
 
+Periodically you can run the following to get the most up-to-date packages
+
+.. code:: bash
+  
+  apt update
+  apt upgrade mountainlab mlpipeline mountainsort mountainview
+
 
 Testing the installation
 ------------------------
