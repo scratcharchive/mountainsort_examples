@@ -87,7 +87,7 @@ Next, try the examples in the mountainsort_examples repository
 
 .. code:: bash
 
-  mlp-run synthesize_v1.mlp synthesize --samplerate=30000 --duration=600 --timeseries=data/raw.mda --geom=data geom.csv --waveforms_true=data/waveforms_true.mda --num_channels=10 --num_units=50
+  mlp-run synthesize_v1.mlp synthesize --samplerate=30000 --duration=600 --timeseries=data/raw.mda --geom=data/geom.csv --waveforms_true=data/waveforms_true.mda --num_channels=10 --num_units=50
 
 This will generate test raw data 'raw.mda', geometry data 'geom.csv', and waveform data 'waveforms_true.mda' in the current directory
 
