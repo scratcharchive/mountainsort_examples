@@ -1,5 +1,6 @@
 # Set the base image to Ubuntu
-FROM ubuntu:xenial
+#FROM ubuntu:xenial
+FROM ubuntu:zesty
 
 MAINTAINER Jeremy Magland
 
@@ -28,7 +29,7 @@ WORKDIR /work
 RUN git clone https://github.com/flatironinstitute/mountainsort_examples
 
 WORKDIR /work/mountainsort_examples/devel/accuracy_test_1
-RUN ./run_test.sh
+#RUN ./run_test.sh
 
 # Allow testing of gui programs
 ENV DISPLAY=":0"

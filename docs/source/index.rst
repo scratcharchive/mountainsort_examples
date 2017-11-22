@@ -35,10 +35,11 @@ The following instructions are for installing MountainSort on Ubuntu 16.04 (reco
 .. code:: bash
 
 	add-apt-repository -y ppa:magland/mountainlab
-	apt-get install mountainlab
-	apt-get install mlpipeline
-	apt-get install mountainsort
-	apt-get install mountainview
+  apt update
+	apt install mountainlab
+	apt install mlpipeline
+	apt install mountainsort
+	apt install mountainview
 
 Once installed, run the following to choose a temporary directory path. This is where MountainSort will store large intermediate files during processing. Put it somewhere with space.
 
