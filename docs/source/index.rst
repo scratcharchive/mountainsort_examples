@@ -30,16 +30,16 @@ Installation
 
 The following instructions are for installing MountainSort on Ubuntu 16.04 (recommended). Installation instructions requiring compilation can be :doc:`found here <installation_advanced>`. 
 
-*Note: The following packages have not quite been updated yet. Please wait until Nov 21st*
-
 .. code:: bash
 
-	add-apt-repository -y ppa:magland/mountainlab
+  add-apt-repository -y ppa:magland/mountainlab
   apt update
-	apt install mountainlab
-	apt install mlpipeline
-	apt install mountainsort
-	apt install mountainview
+  apt install mountainlab
+  apt install mlpipeline
+  apt install mountainsort
+  apt install mountainview
+
+*Caution: If you have python3 already installed using a tool such as miniconda, then you should make sure that miniconda/bin is not in your path. The above packages will install python3 as a Ubuntu package.*
 
 Once installed, run the following to choose a temporary directory path. This is where MountainSort will store large intermediate files during processing. Put it somewhere with space.
 
