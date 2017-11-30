@@ -87,9 +87,14 @@ Next, try the examples in the mountainsort_examples repository
 
 .. code:: bash
 
-  mlp-run synthesize_v1.mlp synthesize --samplerate=30000 --duration=600 --timeseries=data/raw.mda --geom=data/geom.csv --waveforms_true=data/waveforms_true.mda --num_channels=10 --num_units=50
+  mlp-run synthesize_v1.mlp synthesize --timeseries=data/raw.mda --geom=data/geom.csv --waveforms_true=data/waveforms_true.mda --_params=params_synth.json
 
-This will generate test raw data 'raw.mda', geometry data 'geom.csv', and waveform data 'waveforms_true.mda' in the current directory
+This will generate test raw data 'raw.mda', geometry data 'geom.csv', and waveform data 'waveforms_true.mda' in the current directory. The file synthesize_v1.mlp represents a processing pipeline, and "synthesize" is the single exported subroutine. To view and/or edit this pipeline use the following command to launch the mlpipeline GUI:
+
+.. code:: bash
+
+  mlpipeline synthesize_v1.mlp
+
 
 **3. Sort the test data**
 
@@ -98,6 +103,12 @@ You will now call the mountainsort3 sort pipeline, passing it the newly-created 
 .. code:: bash
 
   mlp-run mountainsort3.mlp sort --raw=data/raw.mda --geom=data/geom.csv --firings_out=data/firings.mda --_params=params.json
+
+As in the previous step, mountainsort3.mlp is a processing pipeline with a single exported subroutine called "sort". You can edit this using:
+
+.. code:: bash
+
+  mlpipeline synthesize_v1.mlp
 
 **4. View the test sorting**
 
