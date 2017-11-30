@@ -132,6 +132,9 @@ This time, you will add the automated curation option, '--curate=true'. This wil
 
   mountainview --raw=data/raw.mda --firings=data/firings2.mda --geom=data/geom.csv --samplerate=30000
 
+.. image:: https://user-images.githubusercontent.com/3679296/33456186-a0162f64-d5ec-11e7-976f-70d45b7a79dd.png
+  width: 70%
+
 Note that sorting low signal-to-noise ratio data with relabeling may result in there being no apparent clusters (all clusters are of low quality). For this reason, we suggest first sorting your data without curation.
  
 You are now ready to sort your own data :doc:`first_sort`
