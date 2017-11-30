@@ -6,7 +6,7 @@ addpath('view');
 populations=[2000,2000,400,400];
 xcenters=[0,0,0,0];
 ycenters=[0,6,12,18];
-drift_factors=[5,5,5,5]*0;
+drift_factors=[5,5,5,5]*1;
 num_sections=20;
 lambda_1=0.9;
 lambda_2=0.1;

@@ -1,0 +1,6 @@
+{
+  "samplerate":30000,
+  "duration":600,
+  "num_channels":10,
+  "num_units":50
+}
