@@ -1,6 +1,6 @@
 # Set the base image to Ubuntu
-#FROM ubuntu:xenial
-FROM ubuntu:zesty
+FROM ubuntu:xenial
+#FROM ubuntu:zesty
 
 MAINTAINER Jeremy Magland
 
