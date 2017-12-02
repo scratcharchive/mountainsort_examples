@@ -11,3 +11,7 @@ mp-run-process ms3.confusion_matrix --firings1=data/firings_true.mda --firings2=
 mp-run-process pyms.compute_accuracies --confusion_matrix=data/confusion_matrix.mda --output=data/accuracies.json
 
 cat data/accuracies.json
+
+echo ""
+
+
