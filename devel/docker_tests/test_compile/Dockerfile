@@ -25,7 +25,11 @@ RUN pip3 install sklearn
 
 RUN apt-get update && apt-get install -y git
 
-RUN mkdir /work && echo "4"
+# Do not cache starting from here if using --build_arg build_date="$date"
+ARG build_date=unknown
+RUN build_date=${build_date} && echo "build_date=$build_date"
+
+RUN mkdir /work
 WORKDIR /work
 RUN git clone https://github.com/flatironinstitute/mountainlab
 RUN git clone https://github.com/flatironinstitute/mlpipeline

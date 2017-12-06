@@ -144,7 +144,7 @@ All arguments are the paths to the relevant file
 
 .. code:: bash
 
-    mountainview --raw=raw.mda --filt=filt.mda --pre=pre.mda --geom=geom.csv --firings=firings.mda --metrics=metrics.json
+    mountainview --raw=raw.mda --filt=filt.mda --pre=pre.mda --geom=geom.csv --firings=firings.mda --cluster_metrics=metrics.json
 
 
 Accessing the output
