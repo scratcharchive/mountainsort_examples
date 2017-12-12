@@ -3,6 +3,8 @@ MountainLab Documentation
 
 MountainLab is data processing, sharing and visualization software for scientists. It is built around MountainSort, a spike sorting algorithm, but is designed to more generally applicable.
 
+Developers: Jeremy Magland and Witold Wysota. Some of the web components are being developed by Dylan Simon.
+
 MountainLab is built in layers in order to maintain flexibility and simplicity. The bottom layer allows users to run individual processing commands from a Linux terminal. The top layers allow cloud-based data processing and sharing of analysis pipelines and results through web browser interfaces.
 
 Installation
