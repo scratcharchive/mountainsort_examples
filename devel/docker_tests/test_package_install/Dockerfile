@@ -18,7 +18,7 @@ RUN apt-get update && apt-get install -y mountainsort
 RUN apt-get update && apt-get install -y mountainview
 
 RUN apt-get update && apt-get install -y python3-pip
-RUN pip3 install --upgrade numpy
+##### RUN pip3 install --upgrade numpy
 
 RUN mp-list-processors
 
