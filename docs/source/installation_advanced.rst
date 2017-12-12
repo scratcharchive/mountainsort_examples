@@ -93,14 +93,26 @@ Do the following (after following the prerequisite installation instructions abo
 	cd mlpipeline
 	./compile_components.sh
 
-You must add mlpipeline/bin to your PATH environment variable.
+Add mlpipeline/bin to your PATH environment variable.
+
+Next you must the nodejs dependencies for larinet:
 
 .. code :: bash
 
-	# Then test to see if this opens the GUI:
-	mlpipeline
+	cd mlpipeline/processing_server/larinet
+	npm install
 
-The first time you run this program, some configuration instructions will appear on the window.
+Start running larinet in a separate terminal:
+
+.. code :: bash
+
+	mlp-larinet
+
+The following command should open the GUI:
+
+.. code :: bash
+
+	mlpipeline
 
 Installing the MountainSort plugin package
 ------------------------------------------
