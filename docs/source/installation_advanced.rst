@@ -49,7 +49,7 @@ Otherwise, if you are on a different operating system, use the following links f
 
 * :doc:`Qt5 (version 5.5 or later) <qt5_installation>` 
 * :doc:`NodeJS <nodejs_installation>`
-* :doc:`python3 together with some packages <python installation>` (see above)
+* Python 3 together with some packages (see above)
 * :doc:`FFTW <fftw_installation>`
 * Optional: matlab or octave
 
