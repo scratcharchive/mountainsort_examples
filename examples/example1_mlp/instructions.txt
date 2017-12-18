@@ -10,8 +10,8 @@ mlp-run mountainsort3.mlp sort --raw=data/raw.mda --geom=data/geom.csv --firings
 mountainview --raw=data/raw.mda --firings=data/firings.mda --geom=data/geom.csv --samplerate=30000
 
 # Run sorting with curation
-mlp-run mountainsort3.mlp sort --raw=data/raw.mda --geom=data/geom.csv --firings_out=data/firings2.mda --_params=params.json --curate=true
+mlp-run mountainsort3.mlp sort --raw=data/raw.mda --geom=data/geom.csv --firings_out=data/firings2.mda --_params=params.json --curate=true --cluster_metrics_out=cluster_metrics.json
 
 # View results
-mountainview --raw=data/raw.mda --firings=data/firings2.mda --geom=data/geom.csv --samplerate=30000
+mountainview --raw=data/raw.mda --firings=data/firings2.mda --geom=data/geom.csv --samplerate=30000 --cluster_metrics=cluster_metrics.json
 
