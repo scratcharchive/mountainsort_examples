@@ -1,7 +1,7 @@
 Compilation instructions
 ========================
 
-`Installing using the debbian packages <https://mountainlab.readthedocs.org>`_ is recommended for most users. However, if you wish to be able to compile MountainLab, MLPipelines, MountainSort, and MountainView, you will need to install several dependencies first. Again, Linux/Ubuntu and Debian are the currently supported development platforms. Other Linux flavors should also work. Mac and Windows are not currently not supported. We aim to support mac in the relatively near future.
+`Installing using the Debian packages <https://mountainlab.readthedocs.org>`_ is recommended for most users. However, if you wish to be able to compile MountainLab, MLPipelines, MountainSort, and MountainView, you will need to install several dependencies first. Again, Linux/Ubuntu and Debian are the currently supported development platforms. Other Linux flavors should also work. macOS and Windows are currently not supported. We aim to support macOS in the relatively near future.
 
 Prerequisites
 -------------
@@ -41,7 +41,7 @@ If you are on Ubuntu 16.04 or later, you can get away with using package manager
 	apt-get install libfftw3-dev
 	pip3 install sklearn
 
-	# Optionally, you can install matlab or octave
+	# Optionally, you can install MATLAB or Octave
 	apt-get update
 	apt-get install octave
 
@@ -49,9 +49,9 @@ Otherwise, if you are on a different operating system, use the following links f
 
 * :doc:`Qt5 (version 5.5 or later) <qt5_installation>` 
 * :doc:`NodeJS <nodejs_installation>`
-* :doc:`python3 together with some packages <python installation>` (see above)
+* Python 3 together with some packages (see above)
 * :doc:`FFTW <fftw_installation>`
-* Optional: matlab or octave
+* Optional: `MATLAB <https://www.mathworks.com/>`_ or `Octave <https://www.gnu.org/software/octave/>`_
 
 Compilation
 -----------
@@ -95,7 +95,7 @@ Do the following (after following the prerequisite installation instructions abo
 
 Add mlpipeline/bin to your PATH environment variable.
 
-Next you must the nodejs dependencies for larinet:
+Next you must the install NodeJS dependencies for larinet:
 
 .. code :: bash
 
@@ -207,7 +207,7 @@ If you are not using MountainLab, you can still run these commands with a bit mo
 
 You can also plunge into the python code itself to use these tools from within your python programs. However, note that the processors operate on files rather than taking numpy arrays as arguments.
 
-If you are more comfortable in Matlab, or if your raw data is loadable into Matlab, ML has utilities for reading and writing .mda files and for wrapping ML processors. For example, the to generate the above data one could also execute (from within matlab):
+If you are more comfortable in MATLAB, or if your raw data is loadable into MATLAB, ML has utilities for reading and writing .mda files and for wrapping ML processors. For example, the to generate the above data one could also execute (from within MATLAB):
 
 .. code:: matlab
 
