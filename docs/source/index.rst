@@ -41,6 +41,14 @@ The following instructions are for installing MountainSort on Ubuntu 16.04 (reco
 
 *Caution: If you have python3 already installed using a tool such as miniconda, then you should make sure that miniconda/bin is not in your path. The above packages will install python3 as a Ubuntu package.*
 
+Note: There may be a subtle bug in numpy version 1.11 (default installed on Ubuntu 16.04), so the following additional steps are recommended to upgrade to a later version of numpy:
+
+.. code:: bash
+
+  apt install python3-pip
+  pip3 install numpy
+
+
 Once installed, run the following to choose a temporary directory path. This is where MountainSort will store large intermediate files during processing. Put it somewhere with space.
 
 .. code:: bash
