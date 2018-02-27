@@ -118,7 +118,7 @@ Select the sorting pipeline
 
 With MountainSort, there is the mountainsort3 pipeline included, and you can also build your own pipeline :doc:`processing_pipelines`.
 
-The mountainsort3 pipeline is found in 'mountainlab/packages/mountainsort/pipelines'
+The mountainsort3 pipeline is found in 'mountainsort/pipelines'
 
 Sort the data
 =============
