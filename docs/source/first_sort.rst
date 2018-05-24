@@ -14,6 +14,10 @@ Preparing raw data
 
 The first step of spike sorting using MountainSort is to prepare a raw $M\times N$ timeseries dataset in .mda format. Here $M$ is the number of electrode channels and $N$ is the number of timepoints. Note that if your electrode array can be split into multiple independent channel subsets, then you should sort each of these subsets separately.
 
+.. _msort-for-snippets: https://github.com/mari-sosa/Mountainsort_for_snippets/blob/master/mountainsort_for_snippets.md
+
+Note that if you do not have snippets rather than a continuous recording, you may want to read the following: msort-for-snippets_ 
+
 Converting from raw binary
 --------------------------
 
