@@ -1,0 +1,30 @@
+{
+  "name": "mountainsort_examples",
+  "version": "1.0.0",
+  "description": "Examples for getting started with MountainSort spike sorting software",
+  "main": "",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/flatironinstitute/mountainsort_examples.git"
+  },
+  "keywords": [
+    "mountainlab",
+    "mountainsort",
+    "kbucket"
+  ],
+  "author": "Jeremy Magland",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/flatironinstitute/mountainsort_examples/issues"
+  },
+  "homepage": "https://github.com/flatironinstitute/mountainsort_examples#readme",
+  "dependencies": {
+    "mountainlab-js": "^0.3.0"
+  }
+}
