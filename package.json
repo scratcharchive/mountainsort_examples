@@ -25,6 +25,6 @@
   },
   "homepage": "https://github.com/flatironinstitute/mountainsort_examples#readme",
   "dependencies": {
-    "mountainlab-js": "^0.3.0"
+    "mlclient": "^1.4.0"
   }
 }
