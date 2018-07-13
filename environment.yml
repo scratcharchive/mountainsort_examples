@@ -1,0 +1,7 @@
+name: ml-lari-binder
+channels:
+  - tjd2002
+  - defaults # just being explicit, this is added automatically
+dependencies:
+  - mountainlab-js
+  - mountainlab_pytools
