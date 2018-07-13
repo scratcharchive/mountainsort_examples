@@ -3,5 +3,5 @@ channels:
   - tjd2002
   - defaults # just being explicit, this is added automatically
 dependencies:
-  - mountainlab-js
+  - mountainlab
   - mountainlab_pytools
