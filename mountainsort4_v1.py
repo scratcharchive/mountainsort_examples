@@ -158,7 +158,7 @@ def compute_cluster_metrics(*,timeseries,firings,metrics_out,samplerate,opts={})
 def automated_curation(*,firings,cluster_metrics,firings_out,opts={}):
     # Automated curation
     label_map=mlp.runProcess(
-        'pyms.create_label_map',
+        'ms4alg.create_label_map',
         {
             'metrics':cluster_metrics
         },
@@ -169,7 +169,7 @@ def automated_curation(*,firings,cluster_metrics,firings_out,opts={}):
         opts
     )['label_map_out']
     return mlp.runProcess(
-        'pyms.apply_label_map',
+        'ms4alg.apply_label_map',
         {
             'label_map':label_map,
             'firings':firings
