@@ -36,7 +36,7 @@ def sort_dataset(*,dataset_dir,output_dir,freq_min=300,freq_max=6000,adjacency_r
     ms4alg_sort(
         timeseries=output_dir+'/pre.mda.prv',
         geom=dataset_dir+'/geom.csv',
-        firings_out=output_dir+'/firings.mda',
+        firings_out=output_dir+'/firings_uncurated.mda',
         adjacency_radius=adjacency_radius,
         detect_sign=detect_sign,
         detect_threshold=detect_threshold,
@@ -46,7 +46,7 @@ def sort_dataset(*,dataset_dir,output_dir,freq_min=300,freq_max=6000,adjacency_r
     # Compute cluster metrics
     compute_cluster_metrics(
         timeseries=output_dir+'/pre.mda.prv',
-        firings=output_dir+'/firings.mda',
+        firings=output_dir+'/firings_uncurated.mda',
         metrics_out=output_dir+'/cluster_metrics.json',
         samplerate=ds_params['samplerate'],
         opts=opts
@@ -54,9 +54,9 @@ def sort_dataset(*,dataset_dir,output_dir,freq_min=300,freq_max=6000,adjacency_r
     
     # Automated curation
     automated_curation(
-        firings=output_dir+'/firings.mda',
+        firings=output_dir+'/firings_uncurated.mda',
         cluster_metrics=output_dir+'/cluster_metrics.json',
-        firings_out=output_dir+'/firings_curated.mda',
+        firings_out=output_dir+'/firings.mda',
         opts=opts
     )
     
