@@ -108,7 +108,7 @@ def ms4alg_sort(*,timeseries,geom,firings_out,detect_sign,adjacency_radius,detec
             'geom':geom
         },
         {
-            'firings_out':'output/firings.mda'
+            'firings_out':firings_out
         },
         pp,
         opts
