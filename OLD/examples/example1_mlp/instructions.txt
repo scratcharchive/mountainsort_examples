@@ -1,0 +1,17 @@
+# First install mountainlab, mlpipeline, mountainsort, and mountainview. Then run the following commands
+
+# Synthesize dataset
+mlp-run synthesize_v1.mlp synthesize --timeseries=data/raw.mda --geom=data/geom.csv --waveforms_true=data/waveforms_true.mda --_params=params_synth.json
+
+# Run sorting
+mlp-run mountainsort3.mlp sort --raw=data/raw.mda --geom=data/geom.csv --firings_out=data/firings.mda --_params=params.json
+
+# View results
+mountainview --raw=data/raw.mda --firings=data/firings.mda --geom=data/geom.csv --samplerate=30000
+
+# Run sorting with curation
+mlp-run mountainsort3.mlp sort --raw=data/raw.mda --geom=data/geom.csv --firings_out=data/firings2.mda --_params=params.json --curate=true --cluster_metrics_out=cluster_metrics.json
+
+# View results
+mountainview --raw=data/raw.mda --firings=data/firings2.mda --geom=data/geom.csv --samplerate=30000 --cluster_metrics=cluster_metrics.json
+

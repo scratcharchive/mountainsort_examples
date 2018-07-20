@@ -1,0 +1,58 @@
+#######################################################################
+# First create a dataset by generating synthetic data
+# The important files are raw.mda, geom.csv, and params.json in dataset1/
+# If you want you can skip this step and make your own dataset
+
+mkdir dataset1
+mp-run-process pyms.synthesize_random_waveforms \
+                        --waveforms_out=dataset1/waveforms.mda \
+                        --geometry_out=dataset1/geom.csv \
+                        --upsamplefac=13
+
+mp-run-process pyms.synthesize_random_firings \
+                        --firings_out=dataset1/firings_true.mda \
+                        --samplerate=30000 --duration=600
+
+
+mp-run-process pyms.synthesize_timeseries \
+                        --waveforms=dataset1/waveforms.mda \
+                        --firings=dataset1/firings_true.mda \
+                        --timeseries_out=dataset1/raw.mda \
+                        --waveform_upsamplefac=13 \
+                        --samplerate=30000 --duration=600
+
+echo "{\"samplerate\":30000,\"detect_sign\":1}" > dataset1/params.json
+
+
+#######################################################################
+# Next create a new study and import the dataset and pipeline
+
+mls create-study study1.mls
+source mls-set-current-study study1.mls
+mls import-dataset dataset1 dataset1
+mls import-pipeline ../example1_mlp/mountainsort3.mlp mountainsort3
+
+# We can import the same dataset under an additional id if we want
+mls import-dataset dataset1 dataset1_copy
+
+#######################################################################
+# Now run the analysis and send the results to the results/ directory
+# Take a look at analysis1.js to see how it iterates through all the imported datasets
+
+mls run-batch-script analysis1.js results
+
+#######################################################################
+# Look at the results files in the results/ directory
+# And we can launch the generated .mv2 files in mountainview
+
+mountainview results/dataset1/output.mv2 --cluster_metrics results/dataset1/cluster_metrics.json
+
+#######################################################################
+# If we want we can import then analysis batch script into the study
+mls import-batch-script analysis1.js analysis1
+
+# Then later we can call it by its imported name
+mls run-batch-script analysis1 results
+
+#######################################################################
+# Everything about the study and the analysis is contained within the study1.mls file

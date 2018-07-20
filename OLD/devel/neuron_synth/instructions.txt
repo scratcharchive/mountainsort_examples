@@ -1,0 +1,3 @@
+# Note that you must have the raw data on your computer (it is on kbucket)
+source mls-set-current-study neuron_synth.mls
+mls run-batch-script analysis1 results
