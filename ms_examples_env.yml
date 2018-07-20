@@ -1,14 +1,9 @@
 name: ms_examples
 channels:
   - tjd2002
-  - defaults 
-  - conda-forge 
 dependencies:
-  - mountainlab
-  - mountainlab_pytools
-  - ml_ephys
-  - ml_ms4alg
-  - ml_ms3
+  - mountainsort 4.*
+  - ephys-viz
   - qt-mountainview
   - notebook
   - conda-forge::nb_conda_kernels # 'defaults' no longer updating this pkg? (Jul2018)
