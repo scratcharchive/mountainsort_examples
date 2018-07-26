@@ -7,9 +7,8 @@ def summarize_sorting_results(*,sorting_output_dir,output_dir,opts):
         os.mkdir(output_dir)
     compute_templates(timeseries=sorting_output_dir+'/filt.mda',firings=sorting_output_dir+'/firings.mda',templates_out=output_dir+'/templates_filt.mda')
     
-def compute_templates(*,timeseries,firings,templates_out):
-    opts={}
-    return mlp.runProcess(
+def compute_templates(*,timeseries,firings,templates_out,opts={}):
+    return mlp.addProcess(
         'ephys.compute_templates',
         {
             'timeseries':timeseries,
@@ -20,4 +19,4 @@ def compute_templates(*,timeseries,firings,templates_out):
         },
         {},
         opts
-    )['templates_out']
+    )['outputs']['templates_out']

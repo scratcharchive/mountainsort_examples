@@ -68,7 +68,7 @@ def read_dataset_params(dsdir):
         return json.load(f)
     
 def bandpass_filter(*,timeseries,timeseries_out,samplerate,freq_min,freq_max,opts={}):
-    return mlp.runProcess(
+    return mlp.addProcess(
         'ephys.bandpass_filter',
         {
             'timeseries':timeseries
@@ -84,7 +84,7 @@ def bandpass_filter(*,timeseries,timeseries_out,samplerate,freq_min,freq_max,opt
     )
 
 def whiten(*,timeseries,timeseries_out,opts={}):
-    return mlp.runProcess(
+    return mlp.addProcess(
         'ephys.whiten',
         {
             'timeseries':timeseries
@@ -101,7 +101,7 @@ def ms4alg_sort(*,timeseries,geom,firings_out,detect_sign,adjacency_radius,detec
     pp['detect_sign']=detect_sign
     pp['adjacency_radius']=adjacency_radius
     pp['detect_threshold']=detect_threshold
-    mlp.runProcess(
+    mlp.addProcess(
         'ms4alg.sort',
         {
             'timeseries':timeseries,
@@ -115,7 +115,7 @@ def ms4alg_sort(*,timeseries,geom,firings_out,detect_sign,adjacency_radius,detec
     )
     
 def compute_cluster_metrics(*,timeseries,firings,metrics_out,samplerate,opts={}):
-    metrics1=mlp.runProcess(
+    metrics1=mlp.addProcess(
         'ms3.cluster_metrics',
         {
             'timeseries':timeseries,
@@ -128,8 +128,8 @@ def compute_cluster_metrics(*,timeseries,firings,metrics_out,samplerate,opts={})
             'samplerate':samplerate
         },
         opts
-    )['cluster_metrics_out']
-    metrics2=mlp.runProcess(
+    )['outputs']['cluster_metrics_out']
+    metrics2=mlp.addProcess(
         'ms3.isolation_metrics',
         {
             'timeseries':timeseries,
@@ -142,8 +142,8 @@ def compute_cluster_metrics(*,timeseries,firings,metrics_out,samplerate,opts={})
             'compute_bursting_parents':'true'
         },
         opts
-    )['metrics_out']
-    return mlp.runProcess(
+    )['outputs']['metrics_out']
+    return mlp.addProcess(
         'ms3.combine_cluster_metrics',
         {
             'metrics_list':[metrics1,metrics2]
@@ -157,7 +157,7 @@ def compute_cluster_metrics(*,timeseries,firings,metrics_out,samplerate,opts={})
 
 def automated_curation(*,firings,cluster_metrics,firings_out,opts={}):
     # Automated curation
-    label_map=mlp.runProcess(
+    label_map=mlp.addProcess(
         'ms4alg.create_label_map',
         {
             'metrics':cluster_metrics
@@ -167,8 +167,8 @@ def automated_curation(*,firings,cluster_metrics,firings_out,opts={}):
         },
         {},
         opts
-    )['label_map_out']
-    return mlp.runProcess(
+    )['outputs']['label_map_out']
+    return mlp.addProcess(
         'ms4alg.apply_label_map',
         {
             'label_map':label_map,
@@ -185,7 +185,7 @@ def synthesize_sample_dataset(*,dataset_dir,samplerate=30000,duration=600,num_ch
     if not os.path.exists(dataset_dir):
         os.mkdir(dataset_dir)
     M=num_channels
-    mlp.runProcess(
+    mlp.addProcess(
         'ephys.synthesize_random_waveforms',
         {},
         {
@@ -199,7 +199,7 @@ def synthesize_sample_dataset(*,dataset_dir,samplerate=30000,duration=600,num_ch
         },
         opts
     )
-    mlp.runProcess(
+    mlp.addProcess(
         'ephys.synthesize_random_firings',
         {},
         {
@@ -210,7 +210,7 @@ def synthesize_sample_dataset(*,dataset_dir,samplerate=30000,duration=600,num_ch
         },
         opts
     )
-    mlp.runProcess(
+    mlp.addProcess(
         'ephys.synthesize_timeseries',
         {
             'firings':dataset_dir+'/firings_true.mda',
