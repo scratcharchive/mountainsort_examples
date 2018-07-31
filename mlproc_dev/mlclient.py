@@ -11,6 +11,7 @@ from threading import Timer
 from threading import Thread
 import IPython
 import subprocess
+import json
 
 class LogOutputWidget():
     def __init__(self):
@@ -40,6 +41,7 @@ class MLJobWidget():
             'inputs':{},
             'outputs':{},
             'parameters':{},
+            'opts':{},
             'status':'',
             'console_output':''
         }
@@ -47,6 +49,11 @@ class MLJobWidget():
         self._show_log_output=False
         self._refresh_needed=True
         self._enable_expand=False
+        self._dev_mode=False
+        self._lari_info=None
+        
+    def setDevMode(self,val):
+        self._dev_mode=val
     
     def display(self):
         display(self._out)
@@ -68,14 +75,17 @@ class MLJobWidget():
         self._refresh_needed=True
         self.refresh()
         
-    def _get_lari_job_id_from_console_output(self,txt):
-        ind1=txt.find('LARI_JOB_ID:')
-        if ind1<0:
-            return ''
-        ind2=txt.find('\n',ind1)
-        if ind2<0:
-            return ''
-        return txt[ind1+len('LARI_JOB_ID:'):ind2]
+    def _update_lari_info_from_lari_out_file(self,opts):
+        if not 'lari_out' in opts:
+            return None
+        fname=opts['lari_out']
+        if os.path.isfile(fname):
+            try:
+                with open(fname) as f:
+                    self._lari_info = json.load(f)
+            except Exception as e:
+                print('Warning: Problem reading json file: {}'.format(fname))
+                print(e)
     
     def refresh(self):
         if not self._refresh_needed:
@@ -86,21 +96,29 @@ class MLJobWidget():
         
         info=self._info
         href=''
-        lari_job_id=self._get_lari_job_id_from_console_output(info['console_output'])
-        if lari_job_id:
-            href='https://kbucket.flatironinstitute.org/133898b2b079/download/jobs/'+lari_job_id+'.console.out'
+        self._update_lari_info_from_lari_out_file(info['opts'])
+        if self._lari_info:
+            kbucketgui_url='https://kbucketgui.herokuapp.com'
+            if self._dev_mode:
+                kbucketgui_url='http://localhost:5082'
+            href='{}?lari_id={}&lari_job_id={}'.format(kbucketgui_url,self._lari_info['lari_id'],self._lari_info['lari_job_id'])
 
+        if href:
+            link=vdom.a(
+                info['processor_name']+' ('+self._lari_info['lari_job_id']+')',
+                href=href,
+                target='_blank'
+            )
+        else:
+            link=info['processor_name']
+            
         A=vdom.table(
             vdom.tr(
                 vdom.td(
                     info['status'],style={'color':self._status_color(info['status'])}
                 ),
                 vdom.td(
-                    vdom.a(
-                        info['processor_name'],
-                        href=href,
-                        target='_blank'
-                    )
+                    link
                 )
             )
         )
@@ -138,50 +156,29 @@ class MLJobWidget():
             return 'pink'
         else:
             return 'black'
-        
-class MLJobMonitorWidget:
-    def __init__(self,client):
-        self._client=client
-        self._job_widgets={}
-    def display(self):
-        ids=self._client.jobIds()
-        for id in ids:
-            WW=MLJobWidget()
-            self._job_widgets[id]=WW
-            WW.display()
-    def refresh(self):
-        for id in self._job_widgets:
-            WW=self._job_widgets[id]
-            info=self._client.jobInfo(id)
-            WW.setInfo(info)
-            WW.setEnableExpand(self._client.isFinished())
             
 class MLClient:
     def __init__(self):
         self._jobs={}
         self._job_ids=[]
         self._temporary_files_to_cleanup=[]
-        self._job_monitor=None
         self._is_finished=False
         self._last_status_string=''
+        self._dev_mode=False
 
     def clearJobs(self):
         self.stop_all_processes()
         self._jobs={}
         self._job_ids=[]
-        
-    def displayJobMonitor(self):
-        JM=MLJobMonitorWidget(self)
-        JM.display()
-        JM.refresh()
-        self._job_monitor=JM
-        return JM
             
     def jobIds(self):
         return self._job_ids
     
     def isFinished(self):
         return self._is_finished
+    
+    def setDevMode(self,val):
+        self._dev_mode=val
     
     def jobInfo(self,id):
         job=self._jobs[id]
@@ -218,6 +215,10 @@ class MLClient:
             tmpfile='tmp.'+processor_name+'.'+okey+'.'+self.make_random_id(10)+'.prv'
             outputs[okey]=tmpfile
             self._temporary_files_to_cleanup.append(tmpfile)
+        opts2=copy.deepcopy(opts)
+        tmp_lari_out_file='tmp.'+processor_name+'.lari_out.'+self.make_random_id(10)+'.json'
+        opts2['lari_out']=tmp_lari_out_file
+        self._temporary_files_to_cleanup.append(tmp_lari_out_file)
         job_id = self.make_random_id(10)
         JJ={
             'id':job_id,
@@ -225,17 +226,26 @@ class MLClient:
             'inputs':inputs,
             'outputs':outputs,
             'parameters':parameters,
-            'opts':opts,
+            'opts':opts2,
         }
         JJ['input_files']=self.flatten_iops(inputs)
         JJ['output_files']=self.flatten_iops(outputs)
         JJ['status']='pending'
         JJ['console_output']=''
+        W=MLJobWidget()
+        W.setDevMode(self._dev_mode)
+        JJ['widget']=W
         self._job_ids.append(job_id)
         self._jobs[job_id]=JJ
+        W.display()
+        self._update_job_widget(job_id)
         return {
           'outputs':outputs
         }
+    
+    def _update_job_widget(self,job_id):
+        W=self._jobs[job_id]['widget']
+        W.setInfo(self.jobInfo(job_id))
         
     def next_iteration(self):
         try:
@@ -304,15 +314,11 @@ class MLClient:
         
         while True:
             ret=self.next_iteration()
-            if self._job_monitor:
-                self._job_monitor.refresh()
             if not ret:
                 break
             time.sleep(1)
-            IPython.get_ipython().kernel.do_one_iteration()
+            #IPython.get_ipython().kernel.do_one_iteration()
         self._is_finished=True
-        if self._job_monitor:
-            self._job_monitor.refresh()
         print('Finished pipeline.')
             
     def start(self):
@@ -348,10 +354,12 @@ class MLClient:
         try:
             P=self.start_child_process(cmd)
             job['child_process']=P
+            self._update_job_widget(job['id'])
         except Exception as e:
             self._print_color('FgRed',traceback.format_exc())
             job['status']='error'
             job['error']='Error running command: {}'.format(cmd)
+            self._update_job_widget(job['id'])
         
     #todo: check for child_process stopped and then set status to finished
     
@@ -398,6 +406,7 @@ class MLClient:
                 job['status']='error'
                 job['error']='Process returned with non-zero error code ({})'.format(retcode)
             job['child_process']=None
+            self._update_job_widget(job['id'])
             return
 
     def _handle_process_output(self,P,job):

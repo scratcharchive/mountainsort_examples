@@ -7,17 +7,32 @@ from IPython.core.display import display, HTML
 from .mlclient import MLClient
 from threading import Timer
 import ipywidgets as widgets
+import os, getpass
 
 Global={
     'current_client':MLClient()
 }
 current_client=MLClient()
 
+def lariLogin(lari_id,lari_passcode=None):
+    if lari_passcode is None:
+        print('Enter processing passcode for lari node {}'.format(lari_id))
+        lari_passcode=getpass.getpass()
+    else:
+        lari_passcode=''
+    os.environ['LARI_ID']=lari_id
+    os.environ['LARI_PASSCODE']=lari_passcode
+
+def initPipeline():
+    client=MLClient()
+    Global['current_client']=client
+    
 def addProcess(processor_name, inputs=None, outputs=None, parameters=None, opts=None):
     return Global['current_client'].addProcess(processor_name,inputs,outputs,parameters,opts)
 
-def setCurrentClient(client):
-    Global['current_client']=client
+def runPipeline():
+    client=Global['current_client']
+    client.run()
 
 class _MLProcessorPIO: #parameter, input, or output
     def __init__(self,obj):
