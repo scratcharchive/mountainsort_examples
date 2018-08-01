@@ -45,10 +45,6 @@ class MLJobWidget():
             'status':'',
             'console_output':''
         }
-        self._log_output_widget=LogOutputWidget()
-        self._show_log_output=False
-        self._refresh_needed=True
-        self._enable_expand=False
         self._dev_mode=False
         self._lari_info=None
         
@@ -57,22 +53,10 @@ class MLJobWidget():
     
     def display(self):
         display(self._out)
-        self._refresh()
-        
-    def setEnableExpand(self,val):
-        self._enable_expand=val
-        self._refresh()
+        self.refresh()
         
     def setInfo(self,info):
         self._info=copy.deepcopy(info)
-        self._refresh()
-        
-    def _on_toggle_console_output(self):
-        self._show_log_output=not self._show_log_output
-        self._refresh()
-        
-    def _refresh(self):
-        self._refresh_needed=True
         self.refresh()
         
     def _update_lari_info_from_lari_out_file(self,opts):
@@ -88,10 +72,6 @@ class MLJobWidget():
                 print(e)
     
     def refresh(self):
-        if not self._refresh_needed:
-            return
-        self._refresh_needed=False
-        
         self._out.clear_output(wait=True)
         
         info=self._info
@@ -123,25 +103,8 @@ class MLJobWidget():
             )
         )
         
-        if self._show_log_output:
-            txt='hide'
-        else:
-            txt='view'
-        B=widgets.Button(description=txt,layout={'width':'50px'})
-        def on_click(b):
-            self._on_toggle_console_output()
-        B.on_click(on_click)
         with self._out:
-            W=widgets.Output()
-            with W:
-                display(A)
-            if self._enable_expand:
-                display(widgets.HBox([B,W]))
-            else:
-                display(W)
-            if self._show_log_output:
-                self._log_output_widget.setText(self._info['console_output'])
-                self._log_output_widget.display()
+            display(A)
                     
     def _status_color(self,status):
         if status=='pending':
@@ -408,6 +371,8 @@ class MLClient:
             job['child_process']=None
             self._update_job_widget(job['id'])
             return
+        else:
+            self._update_job_widget(job['id'])
 
     def _handle_process_output(self,P,job):
         start_time = time.time()
