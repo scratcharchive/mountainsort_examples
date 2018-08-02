@@ -1,11 +1,11 @@
 import os
 from mountainlab_pytools import mdaio
-from mountainlab_pytools import mlproc as mlp
+import mlproc_dev as mlp
 
-def summarize_sorting_results(*,sorting_output_dir,output_dir,opts):
+def summarize_sorting_results(*,dataset_dir,sorting_output_dir,output_dir,opts):
     if not os.path.exists(output_dir):
         os.mkdir(output_dir)
-    compute_templates(timeseries=sorting_output_dir+'/filt.mda',firings=sorting_output_dir+'/firings.mda',templates_out=output_dir+'/templates_filt.mda')
+    compute_templates(timeseries=dataset_dir+'/raw.mda',firings=sorting_output_dir+'/firings.mda',templates_out=output_dir+'/templates.mda')
     
 def compute_templates(*,timeseries,firings,templates_out,opts={}):
     return mlp.addProcess(
