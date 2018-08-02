@@ -1,5 +1,5 @@
 from mountainlab_pytools import mdaio
-import mlproc_dev as mlp
+from mountainlab_pytools import mlproc as mlp
 import os
 import json
 

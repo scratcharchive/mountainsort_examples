@@ -1,6 +1,6 @@
 import os
 from mountainlab_pytools import mdaio
-import mlproc_dev as mlp
+from mountainlab_pytools import mlproc as mlp
 
 def summarize_sorting_results(*,dataset_dir,sorting_output_dir,output_dir,opts):
     if not os.path.exists(output_dir):
