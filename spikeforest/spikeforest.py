@@ -4,6 +4,7 @@ from mountainlab_pytools import mlproc as mlp
 import vdom
 import jp_proxy_widget
 import ipywidgets as widgets
+from jp_ephys_viz import ephys_viz_v1
 
 def add_run_to_pipeline(run, output_base_dir, verbose='minimal'):
     DS=run['dataset']
@@ -84,7 +85,7 @@ def get_run_output(run):
     out['output_dir']=run['output_dir']
     return out
 
-def ephys_viz(*,params,title='View',external_link=False,height=450):
+def ephys_viz_disable(*,params,title='View',external_link=False,height=450):
     if external_link:
         query=''
         for key in params:
@@ -125,4 +126,4 @@ class RunSelector:
 def view_dataset(dataset,external_link=False,height=450):
     dataset_id=dataset['id']
     raw_path=dataset['raw_path']
-    ephys_viz(params={'view':'dataset','dataset':raw_path},title='Dataset: {}'.format(dataset_id),external_link=external_link,height=height)
+    ephys_viz_v1(params={'view':'dataset','dataset':raw_path},title='Dataset: {}'.format(dataset_id),external_link=external_link,height=height)
