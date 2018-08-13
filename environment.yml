@@ -1,0 +1,9 @@
+name: mountainsort_examples
+
+channels:
+ - conda-forge
+ - flatiron
+
+dependencies:
+ - python=3.6
+ - mountainlab_ephys
