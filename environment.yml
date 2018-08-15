@@ -13,3 +13,5 @@ dependencies:
  - ml_ms4alg
  - ml_pyms
  - ephys-viz
+ - kbucket
+ - jupyterlab
