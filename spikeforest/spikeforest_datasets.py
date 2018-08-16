@@ -6,15 +6,15 @@ def all_datasets():
     datasets=[]
     datasets.append({
         "id":"synth_tetrode_30min",
-        "raw_path":"kbucket://d97debc4bea2/spikeforest/datasets/synth_tetrode_30min"
+        "raw_path":"kbucket://b5ecdf1474c5/datasets/synth_datasets/datasets/synth_tetrode_30min"
     })
     datasets.append({
         "id":"synth_tetrode_120min",
-        "raw_path":"kbucket://d97debc4bea2/spikeforest/datasets/synth_tetrode_120min"
+        "raw_path":"kbucket://b5ecdf1474c5/datasets/synth_datasets/datasets/synth_tetrode_120min"
     })
     datasets.append({
         "id":"synth_16ch_30min",
-        "raw_path":"kbucket://d97debc4bea2/spikeforest/datasets/synth_16ch_30min"
+        "raw_path":"kbucket://b5ecdf1474c5/datasets/synth_datasets/datasets/synth_16ch_30min"
     })
 
     # bionet_8x
