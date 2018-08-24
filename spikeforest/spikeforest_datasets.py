@@ -2,7 +2,7 @@ from mountainlab_pytools import mlproc as mlp
 from jp_ephys_viz import ephys_viz_v1
 import ipywidgets as widgets
 
-def all_datasets(verbose=False):
+def load_standard_datasets(verbose=True):
     datasets=[]
     
     groups=[
@@ -52,29 +52,3 @@ def view_dataset(dsdir,external_link=False,height=450,dataset_id='',firings='',v
             visible_channels=','.join(str(x) for x in visible_channels)
         params['visible_channels']=visible_channels
     ephys_viz_v1(params=params,title='Dataset: {}'.format(dataset_id),external_link=external_link,height=height)
-    
-def dataset_selection_widget():
-    out=widgets.Output()
-    display(out)
-    with out:
-        datasets=all_datasets(verbose=True)
-    out.close()
-    dataset_ids=[]
-    for ds in datasets:
-        dataset_ids.append(ds['id'])
-    print('Select a dataset:')
-    SS=widgets.Select(
-        options=dataset_ids,
-        #value='',
-        rows=10,
-        #description='Select a dataset:',
-        disabled=False
-    )
-    def get_selected_dataset():
-        id=SS.value
-        for ds in datasets:
-            if ds['id']==id:
-                return ds
-        return None
-    SS.selectedDataset=get_selected_dataset
-    return SS
