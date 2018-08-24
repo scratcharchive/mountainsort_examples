@@ -6,12 +6,12 @@ channels:
 
 dependencies:
  - python=3.6
- - mountainlab
- - mountainlab_pytools
- - ml_ephys
- - ml_ms3
- - ml_ms4alg
- - ml_pyms
- - ephys-viz
- - kbucket
+ - mountainlab=0.13.18
+ - mountainlab_pytools=0.6.6
+ - ml_ephys=0.2.2
+ - ml_ms3=0.0.2
+ - ml_ms4alg=0.1.4
+ - ml_pyms=0.0.1
+ - ephys-viz=0.6.14
+ - kbucket=0.9.12
  - jupyterlab
