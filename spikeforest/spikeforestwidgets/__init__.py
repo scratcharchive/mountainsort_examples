@@ -1,14 +1,31 @@
 import jp_proxy_widget
 import os
+from IPython.display import Javascript
 
-dirname=os.path.dirname(os.path.realpath(__file__))
+loaded_javascript_files={}
+def load_javascript_file(fname):
+    modified_timestamp=os.path.getmtime(fname)
+    if fname in loaded_javascript_files:
+        if loaded_javascript_files[fname]['mtime']==modified_timestamp:
+            return
+    with open(fname,'r') as f:
+        js=f.read()
+    print('Loading javascript: '+fname);
+    display(Javascript(js))
+    loaded_javascript_files[fname]=dict(mtime=modified_timestamp)
+    
+def reload_javascript():
+    dirname=os.path.dirname(os.path.realpath(__file__))
+    load_javascript_file(dirname+'/dist/main.js');
+    
+reload_javascript()
 
 def createWidget(component,props):
+    reload_javascript()
     W=jp_proxy_widget.JSProxyWidget()
     W.state={}
     def on_state_changed(state0):
         W.state=state0
-    W.load_js_files([dirname+'/dist/main.js'])
     W.js_init('''
     element.empty();
     props.onStateChanged=function(state) {{
@@ -38,3 +55,10 @@ class DatasetSelectWidget:
             if ds['id']==id:
                 return ds
         return None
+
+class DatasetWidget:
+    def __init__(self,dataset,visible_channels):
+        self._dataset=dataset
+        self._widget=createWidget('DatasetWidget',dict(dataset=dataset,visible_channels=visible_channels))
+    def display(self):
+        display(self._widget)

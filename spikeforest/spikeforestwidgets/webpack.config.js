@@ -29,5 +29,8 @@ module.exports = {
         use: 'file-loader'
       }
     ]
+  },
+  externals: {
+    "fs":"require('fs')"
   }
 };

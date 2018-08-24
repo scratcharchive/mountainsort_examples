@@ -1,5 +1,4 @@
 from mountainlab_pytools import mlproc as mlp
-from jp_ephys_viz import ephys_viz_v1
 import ipywidgets as widgets
 
 def load_standard_datasets(verbose=True):
@@ -43,12 +42,3 @@ def load_standard_datasets(verbose=True):
     
     return datasets
 
-def view_dataset(dsdir,external_link=False,height=450,dataset_id='',firings='',visible_channels=None):
-    params={'view':'dataset','dataset':dsdir}
-    if firings:
-        params['firings']=mlp.kbucketPath(firings)
-    if visible_channels:
-        if type(visible_channels)==list:
-            visible_channels=','.join(str(x) for x in visible_channels)
-        params['visible_channels']=visible_channels
-    ephys_viz_v1(params=params,title='Dataset: {}'.format(dataset_id),external_link=external_link,height=height)
