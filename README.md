@@ -1,4 +1,4 @@
-* This README document is a work in progress *
+**This README document is a work in progress**
 
 MountainSort is spike sorting software. It is part of MountainLab, which is a larger framework for conducting reproducible and shareable data analysis.
  
