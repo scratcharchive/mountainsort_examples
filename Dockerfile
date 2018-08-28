@@ -6,4 +6,3 @@ RUN conda env update --file /working/environment.yml -n base
 ADD . /mountainsort_examples
 WORKDIR /mountainsort_examples
 
-RUN npm install --unsafe-perm
