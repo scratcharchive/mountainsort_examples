@@ -24,7 +24,7 @@ Next, run the spike sorting:
 ./ms4_sort_bash.sh
 ```
 
-This should create output in output/
+This should create an output directory with some files, including a `firings.mda` file.
 
 Now, view the results using any of the following:
 
