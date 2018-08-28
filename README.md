@@ -20,6 +20,12 @@ After you have installed Miniconda and have created and activated a new conda en
 conda install -c flatiron -c conda-forge mountainlab mountainlab_pytools ml_ephys ml_ms3 ml_ms4alg ml_pyms
 ```
 
+At a later time you can update these packages via:
+
+```
+conda update -c flatiron -c conda-forge mountainlab mountainlab_pytools ml_ephys ml_ms3 ml_ms4alg ml_pyms
+```
+
 You can test the installation by running
 
 ```
@@ -49,5 +55,7 @@ MountainView is an older (but more functional) GUI that can be installed via
 ```
 conda install -c flatiron -c conda-forge qt-mountainview
 ```
+
+Remember to periodically update these packages using the `conda update` command as shown above.
 
 Now, within this conda environment, you are ready to test spike sorting. The first example is a simple bash script and is intended to demonstrate the basic usage of MountainLab using the command line and simple scripts. The recommended way to run processing is via python scripts and jupyterlab as described below. But for now, you can check out the bash script example at [bash_examples/001_ms4_bash_example](bash_examples/001_ms4_bash_example). See the [readme.md](bash_examples/001_ms4_bash_example/readme.md) file there.
