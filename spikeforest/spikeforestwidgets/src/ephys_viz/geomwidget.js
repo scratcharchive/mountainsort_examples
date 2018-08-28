@@ -80,8 +80,6 @@ function GeomWidget(O) {
   }
 
   function is_visible_channel(ch) {
-  	console.log('is_visible_channel '+ch);
-  	console.log(m_visible_channels);
   	if (m_visible_channels) {
   		for (let i in m_visible_channels) {
   			if (m_visible_channels[i]==ch)

@@ -29,9 +29,7 @@ def createWidget(component,props):
     W.js_init('''
     element.empty();
     props.onStateChanged=function(state) {{
-        console.log('on_state_changed',state);
         on_state_changed(state);
-        console.log('test');
     }};
     X=window.render_widget('{}',props,element);
     '''.format(component),props=props,on_state_changed=on_state_changed)
