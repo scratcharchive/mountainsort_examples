@@ -10,7 +10,7 @@ dependencies:
  - kbucket=0.9.15
  - mountainlab_pytools=0.6.6
  - spikeforestwidgets=0.1.2
- - ml_ephys=0.2.2
+ - ml_ephys=0.2.4
  - ml_ms3=0.0.2
  - ml_ms4alg=0.1.4
  - ml_pyms=0.0.1
