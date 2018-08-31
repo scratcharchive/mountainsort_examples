@@ -8,3 +8,5 @@ __pycache__
 dist
 *.sublime-project
 *.sublime-workspace
+dataset
+*output/
