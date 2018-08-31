@@ -6,10 +6,10 @@ channels:
 
 dependencies:
  - python=3.6
- - mountainlab=0.14.3
- - kbucket=0.10.1
- - mountainlab_pytools=0.6.7
- - spikeforestwidgets=0.1.2
+ - mountainlab=0.14.4
+ - kbucket=0.10.2
+ - mountainlab_pytools=0.6.8
+ - spikeforestwidgets=0.1.3
  - ml_ephys=0.2.5
  - ml_ms3=0.0.2
  - ml_ms4alg=0.1.4
