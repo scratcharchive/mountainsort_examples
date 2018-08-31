@@ -6,6 +6,7 @@ channels:
 
 dependencies:
  - python=3.6
+ - matplotlib
  - mountainlab=0.14.4
  - kbucket=0.10.2
  - mountainlab_pytools=0.6.8
