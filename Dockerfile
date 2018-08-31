@@ -10,10 +10,10 @@ RUN conda env update --file /working/environment.yml -n base
 
 ### JupyterLab with extensions
 RUN conda install jupyterlab
-RUN jupyter labextension install @jupyter-widgets/jupyterlab-manager
+RUN ! jupyter labextension install @jupyter-widgets/jupyterlab-manager | tee /dev/stderr | grep -q "error Command failed with exit code"
 RUN pip install jp_proxy_widget
 RUN jupyter nbextension enable --py --sys-prefix jp_proxy_widget
-RUN jupyter labextension install jp_proxy_widget
+RUN ! jupyter labextension install jp_proxy_widget | tee /dev/stderr | grep -q "error Command failed with exit code"
 
 ### Add the examples
 ADD . /mountainsort_examples
