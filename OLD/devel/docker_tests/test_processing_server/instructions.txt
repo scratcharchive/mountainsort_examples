@@ -1,3 +1,0 @@
-sudo docker build -t mlps .
-sudo docker run -it mlps /bin/bash
-npm start

@@ -1,9 +1,0 @@
-name: ms_examples
-channels:
-  - tjd2002
-dependencies:
-  - mountainsort 4.*
-  - ephys-viz
-  - qt-mountainview
-  - notebook
-  - conda-forge::nb_conda_kernels # 'defaults' no longer updating this pkg? (Jul2018)

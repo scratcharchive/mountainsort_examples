@@ -1,1 +1,0 @@
-mountainlab/installation/qt5_installation.rst

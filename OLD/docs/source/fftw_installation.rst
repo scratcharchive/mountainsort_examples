@@ -1,1 +1,0 @@
-mountainlab/installation/fftw_installation.rst
