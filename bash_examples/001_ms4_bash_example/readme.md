@@ -1,4 +1,4 @@
-This example shows how to run the MountainSort v4 spike sorting algorithm using a bash script. This does not include the automated curation and is just intended to illustrate MountainLab usage from the command-line and using simple bash scripts. The recommended way to run spike sorting is by using python scripts in jupyterlab. See the documentation for more details.
+This example shows how to run the MountainSort v4 spike sorting algorithm using a bash script. This does not include the automated curation and is just intended to illustrate MountainLab usage from the command-line and using simple bash scripts. The recommended way to run spike sorting is by using python scripts and/or JupyterLab. See the documentation for more details.
 
 First you must install the latest version of mountainlab and at least the following mountainlab packages (see docs for installation instructions):
 * ml_ephys

@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# This script installs the required jupyterlab extensions for running the examples
+# jp_proxy_widget enables embedding of javascript widgets in jupyterlab notebooks
+
 set -e
 
 jupyter nbextension enable --py --sys-prefix jp_proxy_widget
