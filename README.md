@@ -164,4 +164,5 @@ Installation of `ephys-viz` is similar to that of `mountainlab-js`. Follow the a
 
 The recommended way to run MountainSort is via JupyterLab (or python scripts) as described below. But first, a simple bash script example can be found at [bash_examples/001_ms4_bash_example](bash_examples/001_ms4_bash_example). See the [readme.md](bash_examples/001_ms4_bash_example/readme.md) file there. This example shows how to call MountainLab-registered processors from the command line or using bash scripts.
 
+Some examples using Jupyter notebooks can be found in the `jupyter_examples/` directory.
 
