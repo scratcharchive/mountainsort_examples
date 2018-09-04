@@ -18,7 +18,7 @@ ml-run-process ms4alg.sort \
 	--inputs \
 		timeseries:output/pre.mda.prv geom:dataset/geom.csv \
 	--outputs \
-		firings_out:output/firings.mda.prv \
+		firings_out:output/firings.mda \
 	--parameters \
 		detect_sign:1 \
 		adjacency_radius:-1 \
@@ -26,7 +26,7 @@ ml-run-process ms4alg.sort \
 
 # Compute templates
 ml-run-process ephys.compute_templates \
-	--inputs timeseries:dataset/raw.mda.prv firings:output/firings.mda.prv \
+	--inputs timeseries:dataset/raw.mda.prv firings:output/firings.mda \
 	--outputs templates_out:output/templates.mda.prv \
 	--parameters \
 		clip_size:150
