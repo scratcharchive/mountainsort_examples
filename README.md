@@ -158,13 +158,13 @@ conda install -c flatiron -c conda-forge spikeforestwidgets
 In addition, many of the examples depend on some jupyterlab extensions which can be installed as follows:
 
 ```
-pip install jp_proxy_widget
 jupyter nbextension enable --py --sys-prefix jp_proxy_widget
 jupyter labextension install @jupyter-widgets/jupyterlab-manager --no-build
 jupyter labextension install jp_proxy_widget --no-build
 jupyter lab build
 ```
 
+The first example, [ms4_jupyter_example.ipynb](jupyter_examples/001_ms4_jupyter_example/ms4_jupyter_example.ipynb), shows how to create a synthetic dataset, run spike sorting, and compare with ground truth.
 
-For example, [jupyter_examples/example1/example1.ipynb] shows how to create a synthetic dataset, run spike sorting
+Another example, [example1.ipynb](jupyter_examples/example1/example1.ipynb), shows how to do the same thing, except that it runs processing in Singularity containers on a remote compute server. This is also a live web example that can be run without any installation.
 
