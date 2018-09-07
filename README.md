@@ -12,8 +12,13 @@ The core MountainSort algorithm is implemented in a python package called [ml_ms
 
 The recommended way to use these packages is through [MountainLab](https://github.com/flatironinstitute/mountainlab-js). This allows all the processing routines to be called from a single common interface, either from command line, bash scripts, python scripts, jupyter notebooks, or other high level languages. The framework also enables operating on remote data using remote processing resources and supports encapsulating processors in [Singularity](https://www.singularity-hub.org/) containers. It also facilitates sharing of data, processing pipelines, and spike sorting results.
 
-### Installation using conda
- 
+### Installation options
+
+<details>
+<summary>
+Installation with conda (recommended)
+</summary>
+
 To install using conda, first [install miniconda (or anaconda)](https://github.com/flatironinstitute/mountainlab-js/blob/master/docs/conda.md). If you are not a conda user you may be wary of doing this since, by default, it injects itself into your system path and can cause conflicts with other installed software. However, there are relatively simple remedies for this issue, and conda in general is working to solve this in the default. Some details are [here](https://github.com/flatironinstitute/mountainlab-js/blob/master/docs/conda.md). 
 
 After you have installed Miniconda and have created and activated a new conda environment, you can install the required MountainLab and MountainSort packages via:
@@ -68,7 +73,13 @@ conda install -c flatiron -c conda-forge qt-mountainview
 
 Remember to periodically update these packages using the `conda update` command as shown above.
 
-### Installation without conda
+</details>
+
+
+<details>
+<summary>
+Installation without conda
+</summary>
 
 If you choose not to (or cannot) use conda, you can alternatively install the software from source or by using the pip and npm package managers. Note that the ml_ms3 and qt-mountainview conda packages cannot be installed via (non-conda) package manager since they require Qt5/C++ compilation.
 
@@ -102,7 +113,12 @@ npm install -g ephys-viz
 
 It is possible to install ml_ms3 and qt-mountainview from source, but we are gradually moving away from these packages, so if you need them, I recommend following the conda instructions above.
 
-### Developer installation
+</details>
+
+<details>
+<summary>
+Developer installation
+</summary>
 
 If you want to help develop the framework, or if you for some reason want to avoid using the above package managers, you can install everything from source. Developer installation instructions for MountainLab can be found in [the docs](https://github.com/flatironinstitute/mountainlab-js/blob/master/README.md).
 
@@ -139,6 +155,8 @@ But it is important that you also install all of the dependencies found in `setu
 A similar procedure applies to the `ml_ephys` package, and something similar can be done for `ml_pyms`. The `ml_ms3` package involves Qt5/C++ and is more complicated to compile.
 
 Installation of `ephys-viz` is similar to that of `mountainlab-js`. Follow the above instructions, substituting `ephys-viz` for `mountainlab-js`.
+
+</details>
 
 ## Getting started
 
