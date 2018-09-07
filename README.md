@@ -186,3 +186,6 @@ The first example, [ms4_jupyter_example.ipynb](jupyter_examples/001_ms4_jupyter_
 
 Another example, [example1.ipynb](jupyter_examples/example1/example1.ipynb), shows how to do the same thing, except that it runs processing in Singularity containers on a remote compute server. This is also a live web example that can be run without any installation.
 
+### Sharing datasets
+
+MountainLab makes it possible to share electrophysiology datasets by hosting them from your own computer so that you can take advantage of the web-based sorting capabilities. This is helpful for troubleshooting spike sorting issues, comparing methods, and collaborating on algorithm development. See [sharing_datasets.md](docs/sharing_datasets.md)
