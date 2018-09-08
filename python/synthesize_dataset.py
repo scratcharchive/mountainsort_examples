@@ -2,7 +2,7 @@ import os
 from mountainlab_pytools import mlproc as mlp
 import json
 
-def synthesize_dataset(dsdir,*,M,duration,average_snr):
+def synthesize_dataset(dsdir,*,M,duration,average_snr,K=20):
     if not os.path.exists(dsdir):
         os.mkdir(dsdir)
     noise_level=10
@@ -20,6 +20,7 @@ def synthesize_dataset(dsdir,*,M,duration,average_snr):
         dict(
             upsamplefac=upsamplefac,
             M=M,
+            K=K,
             average_peak_amplitude=average_peak_amplitude
         )
     )
@@ -32,7 +33,8 @@ def synthesize_dataset(dsdir,*,M,duration,average_snr):
         ),
         dict(
             duration=duration,
-            samplerate=samplerate
+            samplerate=samplerate,
+            K=K
         )
     )
     mlp.addProcess(

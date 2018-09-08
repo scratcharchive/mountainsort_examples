@@ -160,6 +160,22 @@ Installation of `ephys-viz` is similar to that of `mountainlab-js`. Follow the a
 
 ## Getting started
 
+### Prepare datasets in MountainSort format
+
+To use MountainSort with your own data, you should prepare datasets in the following directory structure:
+
+```
+study_directory/
+  dataset1/
+    raw.mda
+    geom.csv
+    params.json
+  dataset2/
+    ...
+```
+
+Details on the contents of these files can be found [here](docs/preparing_datasets.md).
+
 ### Simple bash example
 
 The recommended way to run MountainSort is via JupyterLab (or python scripts) as described below. But to illustrate basic usage without notebooks or python, a simple bash script example can be found at [bash_examples/001_ms4_bash_example](bash_examples/001_ms4_bash_example). See the [readme.md](bash_examples/001_ms4_bash_example/readme.md) file there. This example demonstrates how to call MountainLab-registered processors from the command line or using bash scripts.
