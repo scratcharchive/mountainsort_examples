@@ -180,7 +180,7 @@ Details on the contents of these files can be found [here](docs/preparing_datase
 
 The recommended way to run MountainSort is via JupyterLab (or python scripts) as described below. But to illustrate basic usage without notebooks or python, a simple bash script example can be found at [bash_examples/001_ms4_bash_example](bash_examples/001_ms4_bash_example). See the [readme.md](bash_examples/001_ms4_bash_example/readme.md) file there. This example demonstrates how to call MountainLab-registered processors from the command line or using bash scripts.
 
-### Accessing and interpretting outputs
+### Accessing and interpreting outputs
 
 The output of spike sorting for MountainSort is a single file named `firings.mda`. This contains a `R x L` array where `R` is at least 3 and `L` is the number of firing events.
 
