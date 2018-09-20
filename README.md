@@ -180,6 +180,27 @@ Details on the contents of these files can be found [here](docs/preparing_datase
 
 The recommended way to run MountainSort is via JupyterLab (or python scripts) as described below. But to illustrate basic usage without notebooks or python, a simple bash script example can be found at [bash_examples/001_ms4_bash_example](bash_examples/001_ms4_bash_example). See the [readme.md](bash_examples/001_ms4_bash_example/readme.md) file there. This example demonstrates how to call MountainLab-registered processors from the command line or using bash scripts.
 
+### Accessing and interpretting outputs
+
+The output of spike sorting for MountainSort is a single file named `firings.mda`. This contains a `R x L` array where `R` is at least 3 and `L` is the number of firing events.
+
+The second row contains the integer time points (1-based indexing) of the firing events (in sample units).
+
+The third row contains the integer labels or cluster IDs.
+
+Depending on the algorithm, the first row may be all zeros, or may contain the integer channel (1-based indexing) corresponding to the primary channels for each firing event. The channel numbers correspond to the first (channel) dimension in the raw input timeseries.
+
+Further rows may be used in the future for providing reliability metrics for individual events, or quantities that identify outliers.
+
+We are working on various tools for visualizing the output, but for now you can use qt-mountainview, which can be installed via conda as described elsewhere:
+
+```
+qt-mountainview --raw=raw.mda --geom=geom.csv --firings=firings.mda --samplerate=30000
+```
+
+In this command, you need to replace the file names according to your directory setup.
+
+
 ### Jupyter notebooks
 
 Some examples using Jupyter notebooks can be found in the `jupyter_examples/` directory. These require installation of jupyterlab and spikeforestwidgets, e.g., using conda
