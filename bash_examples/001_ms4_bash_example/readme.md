@@ -31,5 +31,5 @@ Now, view the results using any of the following:
 ```
 ev-templates output/templates.mda.prv
 ev-timeseries dataset/raw.mda.prv --firings output/firings.mda.prv --samplerate=30000
-qt-mountainview --raw dataset/raw.mda.prv --filt output/filt.mda.prv --pre output/pre.mda.prv --samplerate 30000 --firings output/firings.mda.prv
+qt-mountainview --raw dataset/raw.mda.prv --filt output/filt.mda.prv --pre output/pre.mda.prv --samplerate 30000 --firings output/firings.mda
 ```
