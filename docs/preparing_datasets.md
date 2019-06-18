@@ -33,6 +33,3 @@ where `study_directory`, `dataset1`, `dataset2`, ... can be replaced by names of
   "spike_sign":-1
 }
 ```
-
-
-Details on the contents of these files can be found [here](docs/preparing_datasets.md).
